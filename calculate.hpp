@@ -6,14 +6,14 @@ using namespace std;
 
 namespace bullpgia
 {
-    //converting a given string to array
-    static int *stringToArray(const string &str)
-    {
-    int stringLength = str.length(); //length of the string
+//converting a given string to array
+static int *stringToArray(const string &str)
+{
+    int stringLength = str.length();  //length of the string
     int *arr = new int[stringLength]; //array in the same length
     for (int i = 0; str[i] != '\0'; i++)
     {
-        arr[i] = str[i] - 48; //'-48' because of ascii code 
+        arr[i] = str[i] - 48; //'-48' because of ascii code
     }
     return arr;
 }
@@ -21,31 +21,30 @@ namespace bullpgia
 static string calculateBullAndPgia(const string choice, const string guess)
 {
     string ans;
-    int bulls=0; //bulls
-    int cows=0; //pgia
-    if (choice.length() != guess.length()) 
+    int bulls = 0; //bulls
+    int cows = 0;  //pgia
+    if (choice.length() != guess.length())
     {
         return "chooser's and guesser's length does not match.";
     }
     else
     {
-        int *chooserArr = new int[choice.length()];
-        int *guesserArr = new int[guess.length()];
+        int *chooserArr;
+        int *guesserArr;
 
         chooserArr = stringToArray(choice);
         guesserArr = stringToArray(guess);
 
         size_t size = choice.length();
 
-        //searching bulls 
+        //searching bulls
         for (size_t i = 0; i < size; i++)
         {
             if (chooserArr[i] == guesserArr[i])
             {
                 bulls++;
-                chooserArr[i] = -1;  
+                chooserArr[i] = -1;
                 guesserArr[i] = -1;
-                
             }
         }
 
@@ -66,14 +65,14 @@ static string calculateBullAndPgia(const string choice, const string guess)
                 }
             }
         }
-       
+        delete[] chooserArr;
+        delete[] guesserArr;
     }
-    string b=to_string(bulls);
-    string c=to_string(cows);
-    ans=b+","+c;
-   
+    string b = to_string(bulls);
+    string c = to_string(cows);
+    ans = b + "," + c;
+
     return ans;
 }
-
 
 } // namespace bullpgia
