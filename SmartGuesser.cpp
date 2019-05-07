@@ -48,12 +48,10 @@ string SmartGuesser::guess()
                     cowValue = digitsComb[i];
                     cowsIndex = i;
                     digitCombIndex = cowsIndex;
-                    cout << "first cowValue" << cowValue << endl;
                     break;
                 }
             }
 
-            cout << "temp bulls: " << temp << endl;
             return temp;
         }
         if (firstbulls == 0 && cowStarted == true)
@@ -62,7 +60,6 @@ string SmartGuesser::guess()
             cowValue = digitsComb[0];
             cowsIndex = 0;
             digitCombIndex = 0;
-            cout << " cowValue no bulls" << cowValue << endl;
         }
         ////////////////cows///////////////////
         if (countbulls == firstbulls)
@@ -74,13 +71,7 @@ string SmartGuesser::guess()
             }
             if (this->bulls == 1) //if the cow became a bull
             {
-                cout << "cowsIndex: " << cowsIndex << endl;
                 solution[cowsIndex - 1] = cowValue;
-                ////////
-                for (int i = 0; i < this->length; i++)
-                {
-                    cout << "solution[i] " << solution[i] << endl;
-                }
 
                 ///swap
                 int tempSwap = digitsComb[digitCombIndex];
@@ -95,13 +86,8 @@ string SmartGuesser::guess()
 
                         cowValue = digitsComb[i];
                         cowsIndex = i;
-                        cout << "new cowValue" << cowValue << endl;
                         break;
                     }
-                }
-                for (int i = 0; i < this->length; i++)
-                {
-                    //cout<<digitsComb[i]<<",";
                 }
                 int counter = 0;
                 int lastItemRemaining = 0;
@@ -143,7 +129,6 @@ string SmartGuesser::guess()
             while (solution[cowsIndex] > -1 && cowsIndex < this->length)
             {
                 cowsIndex++;
-                cout << "cowsIndex: " << cowsIndex << endl;
             }
             temp = "";
             for (int i = 0; i < this->length; i++) //creating bulls string
@@ -167,7 +152,6 @@ string SmartGuesser::guess()
                 cowsIndex++;
                 cowChange = true;
             }
-            cout << "temp cows: " << temp << endl;
             return temp;
         }
     }
