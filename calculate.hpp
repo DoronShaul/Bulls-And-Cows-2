@@ -13,11 +13,19 @@ static int *stringToArray(const string &str)
     int *arr = new int[stringLength]; //array in the same length
     for (int i = 0; str[i] != '\0'; i++)
     {
-        arr[i] = str[i] - 48; //'-48' because of ascii code
+        if (str[i] == 'B') //if this index is a 'bull'
+        {
+            arr[i] = -1;
+        }
+        else
+        {
+            arr[i] = str[i] - 48; //'-48' because of ascii code
+        }
     }
     return arr;
 }
 
+//this method calculates the number of bulls and cows.
 static string calculateBullAndPgia(const string choice, const string guess)
 {
     string ans;
@@ -32,8 +40,8 @@ static string calculateBullAndPgia(const string choice, const string guess)
         int *chooserArr;
         int *guesserArr;
 
-        chooserArr = stringToArray(choice);
-        guesserArr = stringToArray(guess);
+        chooserArr = stringToArray(choice); //coverting the choice's string to an int array.
+        guesserArr = stringToArray(guess);  //coverting the guess's string to an int array.
 
         size_t size = choice.length();
 
